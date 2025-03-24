@@ -1,0 +1,47 @@
+Código en java de Ejercicio Nro. 2 de Estadística.-
+package Tarea;
+
+import java.util.Scanner;
+
+public class Estadistica {
+	private double[] datos;
+	public Estadistica(double[] datos) {
+        this.datos = datos;
+    }
+	public double calcularPromedio() {
+	        double suma = 0;
+	        for (double num : datos) {
+	            suma += num;
+	        }
+	        return suma / datos.length;
+	    }
+	 public double calcularDesviacion() {
+	        double promedio = calcularPromedio();
+	        double sumaCuadrados = 0;
+	        for (double num : datos) {
+	            sumaCuadrados += Math.pow(num - promedio, 2);
+	        }
+	        return Math.sqrt(sumaCuadrados / (datos.length - 1));
+	    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Scanner input = new Scanner(System.in);
+	        double[] numeros = new double[10];
+	        
+	        System.out.println("Ingrese 10 números separados por espacios:");
+	        for (int i = 0; i < 10; i++) {
+	            numeros[i] = input.nextDouble();
+	        }
+	        
+	        Estadistica stats = new Estadistica(numeros);
+	        double promedio = stats.calcularPromedio();
+	        double desviacion = stats.calcularDesviacion();
+	        
+	        System.out.printf("El promedio es:" + promedio);
+	        System.out.printf("La desviación estándar es:" + desviacion);
+
+	}
+
+}
+
