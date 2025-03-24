@@ -1,0 +1,53 @@
+Código en Java de Ejercicio Nro.1 de Ecuación Cuadratica.-
+package Tarea;
+
+import java.util.Scanner;
+
+public class SumaVectores {
+    private double a;
+    private double b;
+    private double c;
+    public SumaVectores(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    public double getDiscriminante() {
+        return b * b - 4 * a * c;
+    }
+    public double getRaiz1() {
+        double discriminante = getDiscriminante();
+        return (-b + Math.sqrt(discriminante)) / (2 * a);
+    }
+    public double getRaiz2() {
+        double discriminante = getDiscriminante();
+        return (-b - Math.sqrt(discriminante)) / (2 * a);
+    }
+    public double getRaizUnica() {
+        return -b / (2 * a);
+    }
+    public void mostrarRaices() {
+        double discriminante = getDiscriminante();
+        
+        if (discriminante > 0) {
+            System.out.printf("La ecuación tiene dos raíces 1 y 2" + getRaiz1() + getRaiz2());
+        } else if (discriminante == 0) {
+            System.out.printf("La ecuación tiene una raíz 1" + getRaizUnica());
+        } else {
+            System.out.println("La ecuación no tiene raíces reales");
+        }
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+Scanner input = new Scanner(System.in);
+        
+        System.out.print("Ingrese a, b, c: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+        
+        SumaVectores ecuacion = new SumaVectores(a, b, c);
+        ecuacion.mostrarRaices();
+
+	}
+}
